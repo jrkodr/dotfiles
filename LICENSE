@@ -1,6 +1,10 @@
 BSD 2-Clause License
 
+<<<<<<< HEAD
 Copyright (c) 2024, jrkodr
+=======
+Copyright (c) 2024, svnix
+>>>>>>> 0cf7334 (Initial commit: configs for Xresources, i3, Keypad tap enable etc)
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:

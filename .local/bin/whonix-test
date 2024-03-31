@@ -1,0 +1,56 @@
+#!/bin/bash
+
+wg="Whonix-Gateway"
+ww="Whonix-Workstation"
+
+status=$(virsh list --all)
+#echo $status
+wgstatus=$(virsh list --all | grep $wg | awk '{ print $3 $4 }')
+#echo $wgstatus
+wwstatus=$(virsh list --all | grep $ww | awk '{ print $3 $4 }')
+#echo $wwstatus
+
+case $1 in
+	start)
+		for i in {"\$wg","\$ww"}
+		do
+			if [[ "${i}status" == "running" ]]; then
+				echo "${i} is already running"
+			else
+				virsh --connect qemu:///system start ${i}
+			fi
+		done
+		;;
+	stop)
+#		for i in {"\$wg","\$ww"}
+#		do
+#			echo "$wgstatus"
+#			status="${i}status"
+#			echo $status
+#			if [[ "$status" == "shutoff" ]]; then
+#				echo "VM is not running"
+#			else
+#				virsh --connect qemu:///system shutdown ${i}
+#			fi
+#		done
+#			if [[ "$wgstatus" == "shutoff" ]]; then
+#				echo "$wg is not running"
+#			else
+#                             	virsh --connect qemu:///system shutdown $wg
+#			fi	
+			;;                                      
+	status)
+		virsh list --all
+		;;
+#	connect)
+#		if [ "$2" ]
+#			virt-viewer --connect qemu:///system "$2"
+#		else
+#			echo "Provide VM name to connect"
+#		fi
+#		;;
+	*)
+		echo "Invalid command"
+		;;
+esac
+

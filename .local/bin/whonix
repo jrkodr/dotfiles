@@ -1,0 +1,10 @@
+#!/bin/bash
+
+wg="Whonix-Gateway"
+ww="Whonix-Workstation"
+
+virsh --connect qemu:///system start $wg
+sleep 120
+virsh --connect qemu:///system start $ww
+#sleep 120
+#virt-viewer --connect qemu:///system $ww
